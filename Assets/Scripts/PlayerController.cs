@@ -5,7 +5,7 @@ public class PlayerController : MonoBehaviour
     public float speed = 6f;               // 이동 속도
     public float mouseSensitivity = 2f;    // 마우스 감도
     public float jumpForce = 2f;           // 점프력
-    public float gAcceleration = -20f;     // 중력가속도
+    public float gAcceleration = -30f;     // 중력가속도
 
     private CharacterController controller;
     private Vector3 velocity;              // 수직(중력, 점프)용 속도
