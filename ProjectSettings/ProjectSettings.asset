@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 28
-  productGUID: 97aaa685e7460d04fa7dac1feb68e62f
+  productGUID: 82efbd6cb81c4694d95dfbabc7e20639
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: DefaultCompany
-  productName: Shortsighted
+  productName: Shortsighted-URP
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -852,14 +852,14 @@ PlayerSettings:
   editorAssembliesCompatibilityLevel: 1
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: Shortsighted
+  metroPackageName: Shortsighted-URP
   metroPackageVersion: 
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
   metroCertificateIssuer: 
   metroCertificateNotAfter: 0000000000000000
-  metroApplicationDescription: Shortsighted
+  metroApplicationDescription: Shortsighted-URP
   wsaImages: {}
   metroTileShortName: 
   metroTileShowName: 0
@@ -930,10 +930,10 @@ PlayerSettings:
   captureStartupLogs: {}
   activeInputHandler: 2
   windowsGamepadBackendHint: 0
-  cloudProjectId: 2b93df39-ff29-4fc1-a81b-62b29ff27e03
+  cloudProjectId: 1eaa67bc-55d7-4d1f-a728-95620242f43a
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: Shortsighted
+  projectName: Shortsighted-URP
   organizationId: yangchang_n
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
