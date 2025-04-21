@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float speed = 6f;               // 이동 속도
-    public float mouseSensitivity = 2f;    // 마우스 감도
-    public float jumpForce = 2f;           // 점프력
-    public float gAcceleration = -30f;     // 중력가속도
+    public float speed = 6f;                        // 이동 속도
+    public float mouseSensitivity = 2f;             // 마우스 감도
+    public float jumpForce = 2f;                    // 점프력
+    public float gravitationalAcceleration = -30f;  // 중력가속도
 
     private CharacterController controller;
-    private Vector3 velocity;              // 수직(중력, 점프)용 속도
+    private Vector3 velocity;                       // 수직(중력, 점프)용 속도
 
     void Start()
     {
@@ -38,12 +38,12 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 // 점프 초기 속도 계산 : 원하는 점프 높이에 맞는 값 설정
-                velocity.y = Mathf.Sqrt(jumpForce * -2f * gAcceleration);
+                velocity.y = Mathf.Sqrt(jumpForce * -2f * gravitationalAcceleration);
             }
         }
 
         // 4. 중력 적용 (매 프레임마다 누적)
-        velocity.y += gAcceleration * Time.deltaTime;
+        velocity.y += gravitationalAcceleration * Time.deltaTime;
 
         // 5. 수평 이동과 수직 속도를 하나의 벡터로 결합하여 이동 적용
         Vector3 finalMove = move * speed + velocity;
