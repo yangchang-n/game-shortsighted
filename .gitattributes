@@ -1,2 +1,2 @@
-"Assets/TextMesh Pro/**" linguist-vendored
-"Assets/TutorialInfo/**" linguist-vendored
+**/Assets/TextMesh*/** linguist-vendored
+**/Assets/Tutorial*/** linguist-vendored
