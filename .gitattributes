@@ -1,1 +1,2 @@
-*.wlt linguist-vendored
+"Assets/TextMesh Pro/**" linguist-vendored
+"Assets/TutorialInfo/**" linguist-vendored
