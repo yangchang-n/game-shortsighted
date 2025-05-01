@@ -1,0 +1,96 @@
+using System.Collections;
+using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
+public class SceneController : MonoBehaviour
+{
+    // 싱글톤 인스턴스
+    private static SceneController _instance;
+
+    [Header("Fade Settings")]
+    [Tooltip("페이드용 UI Panel의 Image 컴포넌트")]
+    public Image fadeImage;
+    [Tooltip("페이드 지속 시간(초)")]
+    public float fadeDuration = 1f;
+
+    [Header("Scene Names")]
+    public string stage01SceneName = "Stage01";
+
+    private void Awake()
+    {
+        // 싱글톤 설정
+        if (_instance == null)
+        {
+            _instance = this;
+            DontDestroyOnLoad(gameObject);
+            // 최초 진입 시 페이드 인
+            StartCoroutine(FadeIn());
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    public void OnStartButton()
+    {
+        FadeToScene(stage01SceneName);
+    }
+
+    public void OnQuitButton()
+    {
+        Application.Quit();
+    }
+
+    public void FadeToScene(string sceneName)
+    {
+        StartCoroutine(FadeOutAndLoad(sceneName));
+    }
+
+    private IEnumerator FadeIn()
+    {
+        float timer = 0f;
+        while (timer < fadeDuration)
+        {
+            timer += Time.deltaTime;
+            SetAlpha(1f - timer / fadeDuration);
+            yield return null;
+        }
+        SetAlpha(0f);
+    }
+
+    private IEnumerator FadeOutAndLoad(string sceneName)
+    {
+        // 페이드 아웃 (투명 -> 불투명)
+        float timer = 0f;
+        while (timer < fadeDuration)
+        {
+            timer += Time.deltaTime;
+            SetAlpha(timer / fadeDuration);
+            yield return null;
+        }
+        SetAlpha(1f);
+
+        // 비동기 씬 로드
+        yield return SceneManager.LoadSceneAsync(sceneName);
+
+        // 씬 로드 후 페이드 인 (불투명 -> 투명)
+        timer = 0f;
+        while (timer < fadeDuration)
+        {
+            timer += Time.deltaTime;
+            SetAlpha(1f - timer / fadeDuration);
+            yield return null;
+        }
+        SetAlpha(0f);
+    }
+    
+    // 페이드 패널의 투명도 조절
+    private void SetAlpha(float alpha)
+    {
+        Color c = fadeImage.color;
+        c.a = Mathf.Clamp01(alpha);
+        fadeImage.color = c;
+    }
+}
