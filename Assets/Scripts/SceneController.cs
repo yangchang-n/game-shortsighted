@@ -8,6 +8,19 @@ public class SceneController : MonoBehaviour
     // 싱글톤 인스턴스
     private static SceneController _instance;
 
+    // 싱글톤 인스턴스 접근 프로퍼티
+    public static SceneController Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                Debug.LogError("SceneController 인스턴스가 존재하지 않습니다.");
+            }
+            return _instance;
+        }
+    }
+
     [Header("Fade Settings")]
     [Tooltip("페이드용 UI Panel의 Image 컴포넌트")]
     public Image fadeImage;
