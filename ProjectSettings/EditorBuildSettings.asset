@@ -9,8 +9,14 @@ EditorBuildSettings:
     path: Assets/Scenes/TitleScreen.unity
     guid: bef70b6cf80bae047b2be3139c3b264b
   - enabled: 1
+    path: Assets/Scenes/SelectStage.unity
+    guid: a7804213f4071394fabc09a47fa3d6b2
+  - enabled: 1
     path: Assets/Scenes/Stage01.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/Stage02.unity
+    guid: ebd2f4f97dd064943bbdd80d2259ad3e
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

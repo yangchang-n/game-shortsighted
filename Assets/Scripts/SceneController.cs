@@ -28,7 +28,8 @@ public class SceneController : MonoBehaviour
     public float fadeDuration = 1f;
 
     [Header("Scene Names")]
-    public string stage01SceneName = "Stage01";
+    public string selectStageSceneName = "SelectStage";
+    // public string stage01SceneName = "Stage01";
 
     private void Awake()
     {
@@ -48,7 +49,8 @@ public class SceneController : MonoBehaviour
 
     public void OnStartButton()
     {
-        FadeToScene(stage01SceneName);
+        StageProgressManager.Instance.MarkStarted();
+        FadeToScene(selectStageSceneName);
     }
 
     public void OnQuitButton()
@@ -63,6 +65,12 @@ public class SceneController : MonoBehaviour
 
     private IEnumerator FadeIn()
     {
+        // 초기 씬 로드 시, 타이틀 또는 선택 화면에서만 커서 보이기
+        string initScene = SceneManager.GetActiveScene().name;
+        bool showCursor = initScene == "TitleScreen" || initScene == "SelectStage";
+        Cursor.visible = showCursor;
+        Cursor.lockState = showCursor ? CursorLockMode.None : CursorLockMode.Locked;
+
         float timer = 0f;
         while (timer < fadeDuration)
         {
@@ -85,10 +93,15 @@ public class SceneController : MonoBehaviour
         }
         SetAlpha(1f);
 
-        // 비동기 씬 로드
+        // 씬 로드
         yield return SceneManager.LoadSceneAsync(sceneName);
 
-        // 씬 로드 후 페이드 인 (불투명 -> 투명)
+        // 씬 로드 후, 타이틀 또는 선택 화면에서만 커서 보이기
+        bool showCursor = sceneName == "TitleScreen" || sceneName == "SelectStage";
+        Cursor.visible = showCursor;
+        Cursor.lockState = showCursor ? CursorLockMode.None : CursorLockMode.Locked;
+
+        // 페이드 인 (불투명 -> 투명)
         timer = 0f;
         while (timer < fadeDuration)
         {
